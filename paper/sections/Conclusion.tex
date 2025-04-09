@@ -1,0 +1,46 @@
+\section{Conclusion}
+    
+This study summarizes and compares three approaches to ensemble width estimation in binaural recordings of music. The auditory-system-based method demonstrated superior performance in the baseline test, with an MAE of $6.59\degree \pm 0.11\degree$. This suggests that combining auditory modeling expertise with a traditional feature-based machine learning algorithm can be more effective than relying solely on deep learning techniques in this context.
+
+Auditory-model-based (1) and neural-network-based (2) methods demonstrated a moderate robustness to noise, down to  $\mathrm{SNR}=10\,\mathrm{dB}$ and $\mathrm{SNR}=-3\,\mathrm{dB}$, respectively. However the~performance of all the tested techniques exposed significant limitations under reverberant conditions, showing that these methods are not yet ready for real-world applications. This limitation is likely caused by the fact that these models were trained exclusively on anechoic signals, suggesting a direction for future research: developing models that incorporate realistic room acoustics into the training process.
+
+Addressing the limitations above could lead to more robust binaural audio quality-assessment tools suitable for practical applications in audio production. Additionally, the varying performance characteristics observed across different acoustic conditions suggest potential benefits in hybrid approaches combining strengths of multiple models.
+
+% Experimental results revealed that the auditory system-based model performed best with an MAE of $6.59\degree$ ($\pm0.11\degree$). This suggests that incorporating domain knowledge through auditory modeling and carefully selected binaural cues, combined with decision tree regression, outperformed the pure deep learning approach.
+
+% All models demonstrated limited resilience to noise, with the~neural-network-based model exhibiting the highest robustness for $\mathrm{SNR}>-3\,\mathrm{dB}$. The reverberation experiment indicated that none of the models exhibited significant robustness, showing significant performance degradation at $\mathrm{RT}_{60}=0.1$~s. This limitation is likely due to the lack of training on reverberant signals, indicating an area for potential improvement. Addressing this gap could contribute to developing objective quality assessment tools for audio engineers working with binaural audio.
+
+
+% \textbf{TODO:}
+%\begin{itemize}
+%    \item All areas of QC are still currently in the phase of active research (far from being mature).
+%    \item Both new and well-established technologies push the development of Quantum Devices further. 
+%    \item The improvements of hardware and algorithms allow for emerging practical applications.
+% Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua \cite{Preskill2018}, \cite{Pontryagin1962,Shenoy2020,Shao2019,Kober2013}. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+%\appendices
+%\section{Proof of the First Zonklar Equation}
+%Appendix one text goes here.
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+%\section{}
+%Appendix two text goes here.
+
+%\end{itemize}

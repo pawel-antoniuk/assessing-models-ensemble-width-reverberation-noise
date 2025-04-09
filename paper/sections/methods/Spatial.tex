@@ -1,0 +1,45 @@
+\section{Spatial-Spectrogram-Based Method}
+\label{sec:methods:spatial}
+
+The spatial-spectrogram-based method, originally introduced by Arthi and Sreenivas \cite{arthi_binaural_2022}, employs a phase-only spatial correlation (POSC) function to estimate ensemble width, treating the binaural signals primarily in the frequency domain. The~method consists of three main steps: calculation of generalized cross-correlation functions, generation of spatial spectrograms, and ensemble width estimation.
+
+First, two generalized cross-correlation functions with phase transform (GCC-PHAT) are calculated:
+\begin{equation}
+\rho(k) \stackrel{\mathcal{F}}{\longleftrightarrow} \frac{X_r(\omega) \times X_l^*(\omega)}{|X_r(\omega) \times X_l^*(\omega)|},
+\end{equation}
+\begin{equation}
+\rho_\theta(k) \stackrel{\mathcal{F}}{\longleftrightarrow} \frac{H_r^\theta(\omega) \times H_l^{\theta*}(\omega)}{|H_r^\theta(\omega) \times H_l^{\theta*}(\omega)|},
+\end{equation}
+where $\rho(k)$ denotes the GCC-PHAT function for the \mbox{$k$-th} sample of the binaural signal; $\rho_\theta(k)$ represents the GCC-PHAT function for the $k$-th sample of the HRIR; $X_l(\omega)$ and $X_r(\omega)$ are Fourier transforms of the~left and right channel signals, respectively; $H_l^\theta$ and $H_r^\theta$ are Fourier transforms of the~left and right channels, respectively, for the HRIR at azimuth $\theta$; and~$^*$~denotes complex conjugate. The phase-only spatial correlation (POSC) function $C_\rho(\theta)$ is then calculated as:
+
+\begin{equation}
+C_\rho(\theta) \triangleq \sum \rho(k) \times \rho_\theta(k)
+\end{equation}
+
+To account for the observation that sources closer to $0\degree$ have a greater impact on $C_\rho(\theta)$ than more distant sources, a~correction is applied:
+
+\begin{equation}
+\widetilde{C_\rho(\theta)} = C_\rho(\theta) \times (1 + \theta u),
+\end{equation}
+where $u$ is a correction weight determined through optimization.
+
+The ensemble width is estimated using a three-step algorithm:
+
+\begin{enumerate}
+\item Find $\max \widetilde{C_\rho(\theta)}$ considering all frames in the binaural excerpt.
+\item Find the minimal ($\theta_a$) and maximal ($\theta_b$) roots of:
+      \begin{equation}
+      \widetilde{C_\rho(\theta)} = t_h \times \max \widetilde{C_\rho(\theta)},
+      \end{equation}
+      where $t_h \in [0,1]$ is a threshold coefficient.
+\item Calculate ensemble width as $\omega = \theta_b - \theta_a$ averaged over all frames.
+\end{enumerate}
+
+The method requires optimization of only two parameters: the correction weight $u$ and threshold coefficient $t_h$. These parameters are determined using a grid search procedure with $u \in [0,2]$ and $t_h \in [0,1]$. Unlike the previous two methods, this approach is deterministic and does not require extensive training data, making it computationally efficient but potentially less accurate. For further details, see~\cite{antoniuk_blind_2023}.
+
+% \begin{figure}[t]
+% \centering
+% \includegraphics[width=0.9\linewidth]{spatiogram_method}
+% \caption{A flowchart of the spatial-spectrogram-based method illustrating the three main processing steps}
+% \label{fig:spatiogram_method}
+% \end{figure}
